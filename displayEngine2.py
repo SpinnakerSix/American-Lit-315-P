@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 from cStringIO import StringIO
 
 
+image1 = Image.open("coupons/coke-coupon.png")
 def display(message, picture_link):
     print 'Displaying Coupon!'
 
@@ -17,16 +18,15 @@ def display(message, picture_link):
     #image1 = Image.open(im)
 
     #f = open(picture_link)
-    image1 = Image.open(picture_link)
+    #image1 = Image.open(picture_link)
     #image1 = picture_link
+    print image1
     #root.geometry('%dx%d' % (image1.size[0],image1.size[1]))
      
     # Convert the Image object into a TkPhoto object
     tkpi = ImageTk.PhotoImage(image1)
     print tkpi
-    label_image = Label(root, image=tkpi, text=message, font=("default",12),compound='top',width=image1.size[0], height=image1.size[1]+20)
-    label_image.image = tkpi # keep a reference or python Garbage collects this
-    label_image.pack()  # pack it in the display windowv
+    label_image = Label(root, image=tkpi, text=message, font=("default",12),compound='top',width=image1.size[0], height=image1.size[1]+20).pack() # pack it in the display window
 
     #root.geometry('300x300')
     root.title("Your Reward!")
@@ -40,7 +40,7 @@ def display(message, picture_link):
  
 def displayCoupon(message, picture_link):
   #image1 = Image.open(picture_link)
-  thread.start_new_thread( display, (message, picture_link, ) )
+  thread.start_new_thread( display, (message, image1, ) )
 
 #print 'ladfadfadsadf'
 #display('Coupon Coupon Coupon', 'coke-coupon.png')

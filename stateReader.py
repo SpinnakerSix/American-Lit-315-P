@@ -1,5 +1,6 @@
 import util
 import displayEngine
+from gtktest import Image_Example
 
 # detects 3 things
 # achievement (passed a level)
@@ -14,7 +15,7 @@ class reader():
   def __init__(self):
      self.highScoresLimit = 1
      self.achievementsLimit = 1
-     self.closeCallsLimit = 3
+     self.closeCallsLimit = 2
      self.specialsLimit = 1
      
      # delay 20sec between displaying coupons
@@ -31,20 +32,21 @@ class reader():
      if (self.highScoresLimit > 0 and currentScore >= targetScore):
        self.highScoresLimit -= 1
        print 'Display NEW HIGH SCORE coupon!'
-       displayEngine.displayCoupon('New High Score!')
+       displayEngine.displayCoupon('New High Score!', 'coupons/coke-coupon.png')
+       #Image_Example().threadMain()
  
   def victory(self, yesNo):
      if (self.achievementsLimit > 0 and yesNo):
        self.achievementsLimit -= 1
        print 'Display ACHIEVEMENT coupon!'
-       displayEngine.displayCoupon('Victory!')
+       displayEngine.displayCoupon('Victory!', 'coupons/gamestop-coupon.jpeg')
 
   # accept a boolean isInSpecialState. If in special state, we call the coupon 
   def special(self, isInSpecialState, message='Special'):
      if (self.specialsLimit > 0 and isInSpecialState):
        self.specialsLimit -= 1
        print 'Display SPECIAL coupon!'
-       displayEngine.displayCoupon(message)
+       displayEngine.displayCoupon(message, 'coupons/redbull-coupon.png')
     
   def closeCall(self, pacmanState, ghostState):
     distance = util.manhattanDistance(pacmanState, ghostState)
@@ -53,6 +55,6 @@ class reader():
       self.closeCallsLimit -= 1
       print 'Display CLOSE CALL coupon!'
       self.lastCallTime = datetime.now()
-      displayEngine.displayCoupon('Close Call!')
+      displayEngine.displayCoupon('Close Call!', 'coupons/popchips-coupon.jpg')
 
 
