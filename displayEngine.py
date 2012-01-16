@@ -6,7 +6,7 @@ def display(message):
     print 'Displaying Coupon!'
 
     root = Tk()
-    root.geometry('300x512-250+100')
+    root.geometry('300x300')
     root.title("Your Reward!")
     w = Message(root, text=message, width=400, font=("default",12), justify='center')
     w.pack()

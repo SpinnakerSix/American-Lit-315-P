@@ -15,6 +15,7 @@ class reader():
      self.highScoresLimit = 1
      self.achievementsLimit = 1
      self.closeCallsLimit = 3
+     self.specialsLimit = 1
      
      # delay 20sec between displaying coupons
      self.bufferTime = 5
@@ -37,6 +38,13 @@ class reader():
        self.achievementsLimit -= 1
        print 'Display ACHIEVEMENT coupon!'
        displayEngine.displayCoupon('Victory!')
+
+  # accept a boolean isInSpecialState. If in special state, we call the coupon 
+  def special(self, isInSpecialState, message='Special'):
+     if (self.specialsLimit > 0 and isInSpecialState):
+       self.specialsLimit -= 1
+       print 'Display SPECIAL coupon!'
+       displayEngine.displayCoupon(message)
     
   def closeCall(self, pacmanState, ghostState):
     distance = util.manhattanDistance(pacmanState, ghostState)

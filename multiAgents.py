@@ -341,6 +341,9 @@ def betterEvaluationFunction(currentGameState):
      score = currentGameState.getScore()
      gameReader.highScore(score, 50)
      gameReader.victory(currentGameState.isWin())
+     
+     if (newScaredTimes[0] > 0 and newScaredTimes[1] > 0):
+       gameReader.special(True, 'GHOST HUNTER Reward Unlock!')
      #print scoreEvaluationFunction(currentGameState)
      #print newPos
      #print newPos, ghost1Pos, ghost2Pos
