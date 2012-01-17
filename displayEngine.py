@@ -27,8 +27,10 @@ def display(message, picture_link):
     label_image = Label(root, image=tkpi, text=message, font=("default",12),compound='top',width=image1.size[0], height=image1.size[1]+20)
     label_image.image = tkpi # keep a reference or python Garbage collects this
     label_image.pack()  # pack it in the display windowv
-
-    #root.geometry('300x300')
+	
+    width = image1.size[0]
+    height = image1.size[1]
+    root.geometry("200x200-25-0")
     root.title("Your Reward!")
     #m = Message(root, text=message, width=400, font=("default",12), justify='center').pack()
 
