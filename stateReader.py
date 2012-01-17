@@ -47,11 +47,15 @@ class reader():
        self.specialsLimit -= 1
        print 'Display SPECIAL coupon!'
        displayEngine.displayCoupon(message, 'coupons/redbull-coupon.png')
-    
-  def closeCall(self, pacmanState, ghostState):
-    distance = util.manhattanDistance(pacmanState, ghostState)
-    
-    if (self.timePassed() > self.bufferTime and self.closeCallsLimit > 0 and distance < 2):
+   
+  def isCloseCall(self, player, enemy):
+    for e in enemy:
+      if util.manhattanDistance(player, e) > 2:
+         return False
+    return True
+       
+  def closeCall(self, pacmanState, allGhostStates):
+    if (self.timePassed() > self.bufferTime and self.closeCallsLimit > 0 and self.isCloseCall(pacmanState, allGhostStates)):
       self.closeCallsLimit -= 1
       print 'Display CLOSE CALL coupon!'
       self.lastCallTime = datetime.now()

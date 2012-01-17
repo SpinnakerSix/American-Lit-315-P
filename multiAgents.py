@@ -335,9 +335,8 @@ def betterEvaluationFunction(currentGameState):
      newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
      
      ######## GAME STATE READER HACKS ##########
-     gameReader.closeCall(newPos, ghost1Pos)
-     gameReader.closeCall(newPos, ghost2Pos)
-
+     gameReader.closeCall(newPos, (ghost1Pos, ghost2Pos))
+     gameReader.closeCall(newPos, (ghost1Pos,))
      score = currentGameState.getScore()
      gameReader.highScore(score, 50)
      gameReader.victory(currentGameState.isWin())
