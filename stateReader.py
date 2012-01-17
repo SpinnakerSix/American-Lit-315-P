@@ -10,6 +10,7 @@ from gtktest import Image_Example
 # GHOST HUNTER #
 
 from datetime import datetime
+path = '/home/innovision/Downloads/pacman_ingidio_demo/'
 
 class reader():
   def __init__(self):
@@ -32,21 +33,21 @@ class reader():
      if (self.highScoresLimit > 0 and currentScore >= targetScore):
        self.highScoresLimit -= 1
        print 'Display NEW HIGH SCORE coupon!'
-       displayEngine.displayCoupon('New High Score!', 'coupons/coke-coupon.png')
+       displayEngine.displayCoupon('New High Score!', path + 'coupons/coke-coupon.png')
        #Image_Example().threadMain()
  
   def victory(self, yesNo):
      if (self.achievementsLimit > 0 and yesNo):
        self.achievementsLimit -= 1
        print 'Display ACHIEVEMENT coupon!'
-       displayEngine.displayCoupon('Victory!', 'coupons/gamestop-coupon.jpeg')
+       displayEngine.displayCoupon('Victory!', path + 'coupons/gamestop-coupon.jpeg')
 
   # accept a boolean isInSpecialState. If in special state, we call the coupon 
   def special(self, isInSpecialState, message='Special'):
      if (self.specialsLimit > 0 and isInSpecialState):
        self.specialsLimit -= 1
        print 'Display SPECIAL coupon!'
-       displayEngine.displayCoupon(message, 'coupons/redbull-coupon.png')
+       displayEngine.displayCoupon(message, path + 'coupons/redbull-coupon.jpg')
    
   def isCloseCall(self, player, enemy):
     for e in enemy:
@@ -59,6 +60,6 @@ class reader():
       self.closeCallsLimit -= 1
       print 'Display CLOSE CALL coupon!'
       self.lastCallTime = datetime.now()
-      displayEngine.displayCoupon('Close Call!', 'coupons/popchips-coupon.jpg')
+      displayEngine.displayCoupon('Close Call!', path + 'coupons/popchips-coupon.jpg')
 
 
